@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile Page</title>
+    <th:block th:replace="fragments/common :: head"> </th:block>
+</head>
+<body>
+<nav th:replace="fragments/common :: navbar"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-img-left d-none d-md-flex">
+                    <!-- Background image for card set in CSS! -->
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Profile</h5>
+
+                        <div class="form-label-group">
+                            <h4>Username: [[${user.username}]]</h4>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-label-group">
+                            <h4>Business Name: [[${user.businessName}]]</h4>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-label-group">
+                            <h4>Service Partners Customer ID: [[${user.spCustomer_number}]]</h4>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-label-group">
+                           <p>Email address: [[${user.email}]] </p>
+                        </div>
+
+                        <hr>
+
+                    <div class="form-label-group">
+                        <p>First Name: [[${user.firstName}]] </p>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-label-group">
+                        <p>Last Name: [[${user.lastName}]] </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

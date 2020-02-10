@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <th:block th:replace="fragments/common :: head"> </th:block>
+</head>
+<body>
+    <nav th:replace="fragments/common :: navbar"></nav>
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <!-- Login Form -->
+            <p class="error" th:if="${param.taken}">Sorry, that username was already taken. Please try a new username.</p>
+            <form action="/signup" method="POST" class="loginForm"><br>
+                <label>Username <input type="text" class="fadeIn second" name="username" placeholder="username" required minlength="6" maxlength="20"> </label>
+                <label>Service Partners Customer ID <input type="text" class="fadeIn second" name="spCustomer_number" placeholder="Service Partners Customer ID" required minlength="4" maxlength="20"> </label>
+                <label>Password <input type="password" class="fadeIn third" name="password" placeholder="password" required minlength="6" maxlength="20"> </label>
+                <label>Email <input type="text" class="fadeIn fourth" name="email" placeholder="example@example.com" required minlength="6" maxlength="40"> </label>
+                <label>Phone Number <input type="text" class="fadeIn fourth" name="phone" placeholder="253-333-3333"> </label>
+                <label>First Name <input type="text" class="fadeIn fourth" name="firstName" placeholder="First Name" required minlength="2" maxlength="20"> </label>
+                <label>Last Name <input type="text" class="fadeIn fourth" name="lastName" placeholder="Last Name" required minlength="2" maxlength="20"> </label>
+                <label>Business Name <input type="text" class="fadeIn fourth" name="businessName" placeholder="Business Name" required minlength="2" maxlength="20"> </label>
+                <input type="submit" class="fadeIn fourth" value="Sign Up">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:fragment="head">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="/style/style.css">
+        <title>Service Express</title>
+    </th:block>
+</head>
+<body>
+
+    <nav th:fragment="navbar" class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="/" class="navbar-appname">Service Express</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu" type="button" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="dark-blue-text"><i class="fas fa-bars fa-1x"></i></span>
+
+<!--            <span class="narbar-toggler-icon"></span>-->
+
+        </button>
+
+<!--        burgermenu handmade not workin -->
+<!--        <div id="menuItemContainer">-->
+<!--            <div id="burgerMenuContainer" onclick="burgerToX(this)"class>-->
+<!--                <div id="bar1"></div>-->
+<!--                <div id="bar2"></div>-->
+<!--                <div id="bar3"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul th:if="${username}" class="navbar-nav ml-auto">
+                <li class="narbar-item"><a href="/profile" class="nav-link">Profile</a></li>
+                <li class="narbar-item"><a href="/products" class="nav-link">Products</a></li>
+                <li class="narbar-item"><a href="/mycart" class="nav-link">Cart</a></li>
+                <li class="narbar-item"><a href="/contactus" class="nav-link">Contact Us</a></li>
+                <li class="narbar-item"><a href="/about-us" class="nav-link">About Us</a></li>
+                <li class="narbar-item"><a href="/logout" class="nav-link">Log out</a></li>
+
+            </ul>
+            <ul th:unless="${username}" class="navbar-nav ml-auto">
+                <li class="narbar-item"><a href="/login" class="nav-link">Sign In</a></li>
+                <li class="narbar-item"><a href="/signup" class="nav-link">Sign up</a></li>
+                <li class="narbar-item"><a href="/contactus" class="nav-link">Contact Us</a></li>
+                <li class="narbar-item"><a href="/about-us" class="nav-link">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+</body>
+</html>

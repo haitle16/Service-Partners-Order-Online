@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Reference: https://bootsnipp.com/snippets/7nmOW-->
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile Page</title>
+    <th:block th:replace="fragments/common :: head"> </th:block>
+</head>
+<body>
+<nav th:replace="fragments/common :: navbar"></nav>
+
+<div class="container contact-form">
+    <br>
+    <br>
+    <div class="contact-image">
+        <img src="https://images.unsplash.com/photo-1487611459768-bd414656ea10?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="person working macbook" width="400"/>
+    </div>
+    <br>
+    <br>
+    <br>
+    <form action="/contactus" method="GET">
+        <h3>Drop Us a Message</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

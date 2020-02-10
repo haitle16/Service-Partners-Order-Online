@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Cart</title>
+    <th:block th:replace="fragments/common :: head"> </th:block>
+</head>
+<body>
+<nav th:replace="fragments/common :: navbar"></nav>
+
+<div class="container">
+    <div class="card">
+        <div class="card-block">
+            <!--                Displaying the table for products.-->
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ItemCode</th>
+                    <th>Name</th>
+                    <th>Width</th>
+                    <th>Length</th>
+                    <th>Color</th>
+                    <th>Style</th>
+                    <th>Type</th>
+                    <th>Quantity</th>
+                </tr>
+                </thead>
+
+                <div th:if="${param.submitted}" class="wrapper fadeInDown">
+                    <p>Your order has been successfully submitted! Thank you for your business</p>
+                </div>
+
+                <tbody>
+<!--                Iterate through dataList object to display product into mycart page.-->
+                    <tr th:each="data : ${dataList}">
+                        <td th:text="${data.product.itemCode}"></td>
+                        <td th:text="${data.product.itemName}"></td>
+                        <td th:text="${data.product.width}"></td>
+                        <td th:text="${data.product.length}"></td>
+                        <td th:text="${data.product.color}"></td>
+                        <td th:text="${data.product.style}"></td>
+                        <td th:text="${data.product.type}"></td>
+                        <td th:text="${data.quantity}"></td>
+
+                        <td>
+                            <button th:href="@{/mycart/edit/{id}(id=${data.id})}" class="btn btn-primary eBtn" >Edit Quantity</button>
+                            <button th:href="@{/mycart/delete/{id}(id=${data.id})}" class="btn btn-danger delBtn">Delete</button></td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div th:unless="${param.submitted}" style="float: right">
+                <form action="/submit" method="POST">
+                    <input type="hidden" name="id" th:value="${order}">
+                    <input type="submit">
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Got this form from bootstrap 4-->
+<!--    Form modal to Edit quantity for cart items.-->
+    <div th:class="'myForm'+${data.id}" th:each="data : ${dataList}">
+        <form th:action="@{/mycart/edit/{id}(id=${data.id})}" method="POST">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Quantity</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="id" name="id" value=" "/>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="quantity" class="col-form-label">Quantity:</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" th:value="${data.quantity}"/>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="save"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+<!--    Form modal delete cart items.-->
+    <div th:class="'delform'+${data.id}" th:each="data : ${dataList}">
+        <form method="POST" id="deleteFormClient">
+            <input type="hidden" name="_method" value="DELETE">
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="alert alert-danger">Are you sure you want to delete this item off your cart?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger" id="delReference">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
